@@ -24,6 +24,7 @@ const CreateExam = () => {
     const payload = {
       title: data.title,
       courseCode: data.courseCode,
+      courseUnit: data.courseUnit,
       description: data.description,
       duration: durationToSeconds(data.duration),
       questions,
