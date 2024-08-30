@@ -20,13 +20,15 @@ const Header = () => {
         <div className="flex space-x-5 items-center cursor-pointer">
           <div className="flex items-center rounded-full overflow-hidden w-[51px] h-[51px] b-[1.2px]">
             <img
-              src="https://s3-alpha-sig.figma.com/img/7765/4bdc/77b561e7d6f42d691132e581ce49b63d?Expires=1721001600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Uh9SyeulbQAe1VGrZMIyRRrNb8YyoqHhK6Q-yqnxHyXlirZb4VtRPq9gkEmB9MIHToblLTfxbf0xAewJ1HT1dMdEBCmD6S3vdj98JF59uqOnen9yZEIzVB70goZU2Wy8CwS~hq-H2iLDIx0F2M8GhM8CXKmwSgGetr5Kx-UO8Fz4DbvRUiWggWe8JUfmkxH0agLl6vEuT3iAkeoH3uiRVhoLCmWsG-Ftdl1zomTHUoPtbUGt0DHcz3smgpXtSjG2-~0Vy7od3AZNUDNIxZKdsuGq~Wmwq0PPkUcsU1dGv-g4gx3qVrWAxlMdDQHIy3cmpkqNmpp0u4613LOqFwPEhQ__"
+              src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1724716800&semt=ais_hybrid"
               alt="profile image"
             />
           </div>
           <div className="flex flex-col text-sm">
             <p>Samuel Ayobami</p>
-            <span className="text-[#D47024] text-xs">View profile</span>
+            <a href="/profile">
+              <span className="text-[#D47024] text-xs">View profile</span>
+            </a>
           </div>
           <div>
             <svg

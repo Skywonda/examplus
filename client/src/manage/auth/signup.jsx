@@ -5,14 +5,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { api } from "utils/api";
 import { useAuth } from "hooks/useAuth";
 
-const Register = () => {
+const LecturerRegister = () => {
   const navigate = useNavigate();
   const { mutateAsync, isError, error, isSuccess, data } =
     api.usePost("/auth/register");
   const { login } = useAuth();
 
   const handleSubmit = async (data) => {
-    data.type = "STUDENT";
+    data.type = "LECTURER";
     await mutateAsync(data);
   };
 
@@ -21,7 +21,7 @@ const Register = () => {
   }
   if (isSuccess) {
     login(data);
-    navigate("/");
+    navigate("/manage");
   }
   return (
     <AuthLayout
@@ -33,7 +33,7 @@ const Register = () => {
         initialValues={{
           name: "",
           email: "",
-          matricNumber: "",
+          lecturerId: "",
           password: "",
         }}
         onSubmit={handleSubmit}
@@ -52,7 +52,7 @@ const Register = () => {
             className="h-[72px]"
           />
           <Form.Field.Input
-            name={"identity-no"}
+            name={"lecturerId"}
             label={"Matric no/Lecturer ID"}
             className="h-[72px]"
             placeholder="CSC/22/044"
@@ -69,7 +69,7 @@ const Register = () => {
       </Form>
       <div className="w-full h-[70px] mt-0 px-10 flex justify-between items-center">
         <p className="text-[#777777] text-center">Already have an account?</p>
-        <Link to="/auth/login" className="text-[#FF6501] font-medium">
+        <Link to="/auth/manage/login" className="text-[#FF6501] font-medium">
           Login to you account
         </Link>
       </div>
@@ -77,4 +77,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default LecturerRegister;

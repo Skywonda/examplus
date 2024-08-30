@@ -1,6 +1,5 @@
-import React from "react";
 import PropTypes from "prop-types";
-import { buttonVariants } from "../ui/button";
+// import { buttonVariants } from "../ui/button";
 
 const propTypes = {
   className: PropTypes.string,

@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import Input from "../input";
 import { uniqueId } from "lodash";
 import Select from "../select";
+import Textarea from "../text area";
 
 const propTypes = {
   label: PropTypes.string,
@@ -42,4 +43,5 @@ const generateField = (FormComponent) => {
 export default {
   Input: generateField(Input),
   Select: generateField(Select),
+  Textarea: generateField(Textarea),
 };

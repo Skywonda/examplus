@@ -30,8 +30,6 @@ const Select = ({ className, trigger, options, onChange }) => {
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>User type</SelectLabel>
-
           {options.map((option) => (
             <SelectItem key={option} value={option} className="p-3">
               {option}

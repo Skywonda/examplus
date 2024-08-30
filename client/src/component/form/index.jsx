@@ -1,4 +1,3 @@
-import React from "react";
 import { Formik, Form as FormikForm, Field as FormikField } from "formik";
 import { get, mapValues } from "lodash";
 

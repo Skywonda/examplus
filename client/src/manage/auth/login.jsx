@@ -6,15 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { api } from "utils/api";
 import { useAuth } from "hooks/useAuth";
 
-const Login = () => {
+const LecturerLogin = () => {
   const navigate = useNavigate();
   const { mutate, isError, error, isSuccess, data } =
     api.usePost("/auth/login");
   const { login, ensureIsNotAuthenticated } = useAuth();
-  const urlParams = new URLSearchParams(window.location.search);
-  const userType = urlParams.get("userType") || "STUDENT";
   const handleSubmit = (data) => {
-    data.type = userType.toUpperCase();
+    data.type = "LECTURER";
     mutate(data);
   };
   if (isError) {
@@ -22,11 +20,7 @@ const Login = () => {
   }
   if (isSuccess) {
     login(data);
-    if (userType === "lecturer") {
-      navigate("/manage");
-    } else {
-      navigate("/");
-    }
+    navigate("/manage");
   }
   ensureIsNotAuthenticated();
   return (
@@ -76,7 +70,10 @@ const Login = () => {
           </Button>
           <div className="w-full h-[70px] mt-0 px-10 flex justify-between items-center">
             <p className="text-[#777777] text-center">Don't have an account?</p>
-            <Link to="/auth/register" className="text-[#FF6501] font-medium">
+            <Link
+              to="/auth/manage/register"
+              className="text-[#FF6501] font-medium"
+            >
               Create an Account
             </Link>
           </div>
@@ -86,4 +83,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LecturerLogin;
