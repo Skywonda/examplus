@@ -13,7 +13,7 @@ export class ExamService {
   constructor(private prisma: DatabaseService) {}
 
   async createExam(data: CreateExamDto, creatorId: string): Promise<Exam> {
-    const { questions, ...examData } = data;
+    const { questions, courseUnit, ...examData } = data;
     questions.map((each) => {
       if (!each.options.includes(each.answer))
         throw new BadRequestException('Answer not found in options');
@@ -24,6 +24,7 @@ export class ExamService {
       data: {
         ...examData,
         dueDate,
+        courseUnit: parseInt(courseUnit),
         creator: { connect: { id: creatorId } },
         questions: {
           create: questions.map((q) => ({

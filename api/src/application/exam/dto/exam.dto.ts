@@ -31,7 +31,7 @@ export class CreateExamDto {
 
   @IsNotEmpty()
   @IsNumber()
-  courseUnit: number;
+  courseUnit: string;
 
   @IsNotEmpty()
   @IsString()

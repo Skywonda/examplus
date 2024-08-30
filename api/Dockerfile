@@ -29,4 +29,4 @@ RUN rm package*.json
 
 EXPOSE  8000
 
-CMD [ "node", "dist/main.js" ]
+CMD [ "node", "--max-old-space-size=4096", "dist/main.js" ]
