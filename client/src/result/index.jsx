@@ -19,26 +19,6 @@ const StudentResult = () => {
     faculty: "Software Engineering",
   };
 
-  // const result = [
-  //   {
-  //     courseTitle: "Software Engineering",
-  //     courseCode: "CSCE 200",
-  //     score: 90,
-  //     grade: "A",
-  //   },
-  //   {
-  //     courseTitle: "Software Engineering",
-  //     courseCode: "CSCE 200",
-  //     score: 90,
-  //     grade: "A",
-  //   },
-  //   {
-  //     courseTitle: "Software Engineering",
-  //     courseCode: "CSCE 200",
-  //     score: 90,
-  //     grade: "A",
-  //   },
-  // ];
   return (
     <div>
       <div className="px-8">

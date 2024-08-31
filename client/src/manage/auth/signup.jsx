@@ -7,7 +7,7 @@ import { useAuth } from "hooks/useAuth";
 
 const LecturerRegister = () => {
   const navigate = useNavigate();
-  const { mutateAsync, isError, error, isSuccess, data } =
+  const { mutateAsync, isError, error, isSuccess, data, isLoading } =
     api.usePost("/auth/register");
   const { login } = useAuth();
 
@@ -62,7 +62,11 @@ const LecturerRegister = () => {
             label={"Password"}
             className="h-[72px]"
           />
-          <Button className="w-full h-[70px] mt-5" type="submit">
+          <Button
+            className="w-full h-[70px] mt-5"
+            type="submit"
+            isWorking={isLoading}
+          >
             Register
           </Button>
         </Form.Element>

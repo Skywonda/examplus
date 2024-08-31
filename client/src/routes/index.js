@@ -13,6 +13,7 @@ import LecturerRegister from 'manage/auth/signup';
 import RootAuth from 'auth';
 import StudentResult from 'result';
 import StudentHomePage from 'dashboard';
+import Loading from 'component/loading';
 // import ExamQuestions from 'exam/questions';
 
 const Profile = lazy(() => import('profile'));
@@ -38,7 +39,7 @@ const lecturerSidebarItems = [
 
 const AppRoutes = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Loading message="component loading..." />}>
       <Routes>
         <Route path="/auth" element={<RootAuth />} />
         <Route path="/auth/login" element={<Login />} />

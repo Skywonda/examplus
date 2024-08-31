@@ -8,8 +8,7 @@ function StudentHomePage() {
     <div>
       {isLoading && (
         <div>
-          <Loading />
-          Loading...
+          <Loading message={"Loading dashboard..."} />
         </div>
       )}
       {isSuccess && (

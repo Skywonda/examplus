@@ -8,7 +8,7 @@ import { useAuth } from "hooks/useAuth";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { mutate, isError, error, isSuccess, data } =
+  const { mutate, isError, error, isSuccess, data, isLoading } =
     api.usePost("/auth/login");
   const { login, ensureIsNotAuthenticated } = useAuth();
   const urlParams = new URLSearchParams(window.location.search);
@@ -71,7 +71,11 @@ const Login = () => {
             </div>
             <label>Forgot password?</label>
           </div>
-          <Button type="submit" className="w-full h-[70px] mt-5">
+          <Button
+            type="submit"
+            className="w-full h-[70px] mt-5"
+            isWorking={isLoading}
+          >
             Login
           </Button>
           <div className="w-full h-[70px] mt-0 px-10 flex justify-between items-center">
