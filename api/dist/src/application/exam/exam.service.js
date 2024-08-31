@@ -29,7 +29,7 @@ let ExamService = class ExamService {
         this.prisma = prisma;
     }
     async createExam(data, creatorId) {
-        const { questions } = data, examData = __rest(data, ["questions"]);
+        const { questions, courseUnit } = data, examData = __rest(data, ["questions", "courseUnit"]);
         questions.map((each) => {
             if (!each.options.includes(each.answer))
                 throw new common_1.BadRequestException('Answer not found in options');
@@ -37,7 +37,7 @@ let ExamService = class ExamService {
         const dueDate = new Date();
         dueDate.setDate(dueDate.getDate() + 1);
         return this.prisma.exam.create({
-            data: Object.assign(Object.assign({}, examData), { dueDate, creator: { connect: { id: creatorId } }, questions: {
+            data: Object.assign(Object.assign({}, examData), { dueDate, courseUnit: parseInt(courseUnit), creator: { connect: { id: creatorId } }, questions: {
                     create: questions.map((q) => ({
                         text: q.text,
                         options: q.options,
@@ -53,7 +53,10 @@ let ExamService = class ExamService {
             include: {
                 questions: true,
                 creator: true,
-                takenExams: { include: { result: true } },
+                takenExams: {
+                    where: { userId },
+                    include: { result: true },
+                },
             },
         });
         if (!exam) {
@@ -182,16 +185,16 @@ let ExamService = class ExamService {
         };
     }
     calculateGrade(score) {
-        if (score >= 90) {
+        if (score >= 70) {
             return 'A';
         }
-        else if (score >= 80) {
+        else if (score >= 60) {
             return 'B';
         }
-        else if (score >= 70) {
+        else if (score >= 50) {
             return 'C';
         }
-        else if (score >= 60) {
+        else if (score >= 40) {
             return 'D';
         }
         else {

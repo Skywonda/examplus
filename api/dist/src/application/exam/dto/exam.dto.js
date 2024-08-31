@@ -42,8 +42,8 @@ __decorate([
 ], CreateExamDto.prototype, "courseCode", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsNumber)(),
-    __metadata("design:type", Number)
+    (0, class_validator_1.IsNumberString)(),
+    __metadata("design:type", String)
 ], CreateExamDto.prototype, "courseUnit", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),

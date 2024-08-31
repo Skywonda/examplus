@@ -6,7 +6,7 @@ export declare class QuestionDto {
 export declare class CreateExamDto {
     title: string;
     courseCode: string;
-    courseUnit: number;
+    courseUnit: string;
     description: string;
     duration: number;
     questions: QuestionDto[];
