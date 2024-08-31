@@ -44,8 +44,10 @@ const Login = () => {
       >
         <Form.Element>
           {isError && (
-            <div className="text-red-500 text-center mb-4">
-              {error.response?.data?.message}
+            <div className="bg-red-100 border border-red-500 text-red-700 px-4 py-3 rounded relative mb-4">
+              <span className="block sm:inline">
+                {error.response?.data?.message}
+              </span>
             </div>
           )}
           <Form.Field.Input

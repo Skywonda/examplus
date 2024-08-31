@@ -15,54 +15,86 @@ const class_validator_1 = require("class-validator");
 class CreateUserDto {
 }
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsEmail)(),
+    (0, class_validator_1.IsString)({
+        message: 'Email must be a string',
+    }),
+    (0, class_validator_1.IsNotEmpty)({
+        message: 'Email is required',
+    }),
+    (0, class_validator_1.IsEmail)({}, {
+        message: 'Email must be a valid email address',
+    }),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "email", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsString)({
+        message: 'Name must be a string',
+    }),
+    (0, class_validator_1.IsNotEmpty)({
+        message: 'Name is required',
+    }),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "name", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsString)({
+        message: 'Password must be a string',
+    }),
+    (0, class_validator_1.IsNotEmpty)({
+        message: 'Password is required',
+    }),
     (0, class_validator_1.Matches)(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, {
         message: 'Password must be at least 8 characters, contain at least one lowercase letter, one uppercase letter, one number and one special character',
     }),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "password", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsString)({
+        message: 'Matric number must be a string',
+    }),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "matricNumber", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsString)({
+        message: 'Lecturer ID must be a string',
+    }),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "lecturerId", void 0);
 __decorate([
-    (0, class_validator_1.IsEnum)(client_1.UserType),
+    (0, class_validator_1.IsEnum)(client_1.UserType, {
+        message: 'Type must be one of the following: STUDENT, LECTURER',
+    }),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "type", void 0);
 exports.CreateUserDto = CreateUserDto;
 class LoginUserDto {
 }
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsEmail)(),
+    (0, class_validator_1.IsString)({
+        message: 'Email must be a string',
+    }),
+    (0, class_validator_1.IsNotEmpty)({
+        message: 'Email is required',
+    }),
+    (0, class_validator_1.IsEmail)({}, {
+        message: 'Email must be a valid email address',
+    }),
     __metadata("design:type", String)
 ], LoginUserDto.prototype, "email", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsString)({
+        message: 'Password must be a string',
+    }),
+    (0, class_validator_1.IsNotEmpty)({
+        message: 'Password is required',
+    }),
     __metadata("design:type", String)
 ], LoginUserDto.prototype, "password", void 0);
 __decorate([
-    (0, class_validator_1.IsEnum)(client_1.UserType),
+    (0, class_validator_1.IsEnum)(client_1.UserType, {
+        message: 'Type must be one of the following: STUDENT, LECTURER',
+    }),
     __metadata("design:type", String)
 ], LoginUserDto.prototype, "type", void 0);
 exports.LoginUserDto = LoginUserDto;
