@@ -5,6 +5,7 @@ import {
   ValidateNested,
   IsUUID,
   IsNotEmpty,
+  IsNumberString,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
@@ -30,7 +31,7 @@ export class CreateExamDto {
   courseCode: string;
 
   @IsNotEmpty()
-  @IsNumber()
+  @IsNumberString()
   courseUnit: string;
 
   @IsNotEmpty()
