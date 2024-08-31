@@ -44,7 +44,10 @@ export class ExamService {
       include: {
         questions: true,
         creator: true,
-        takenExams: { include: { result: true } },
+        takenExams: {
+          where: { userId },
+          include: { result: true },
+        },
       },
     });
 
@@ -203,13 +206,13 @@ export class ExamService {
   }
 
   private calculateGrade(score: number): string {
-    if (score >= 90) {
+    if (score >= 70) {
       return 'A';
-    } else if (score >= 80) {
-      return 'B';
-    } else if (score >= 70) {
-      return 'C';
     } else if (score >= 60) {
+      return 'B';
+    } else if (score >= 50) {
+      return 'C';
+    } else if (score >= 40) {
       return 'D';
     } else {
       return 'F';
