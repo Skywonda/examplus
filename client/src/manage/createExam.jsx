@@ -14,6 +14,7 @@ const CreateExam = () => {
   const navigate = useNavigate();
   const {
     mutateAsync: createExam,
+    isLoading,
     isSuccess,
     isError,
     error,
@@ -205,7 +206,7 @@ const CreateExam = () => {
           <Button type="button" onClick={addQuestion} className="mt-4">
             <PlusCircle className="mr-2 h-4 w-4" /> Add Question
           </Button>
-          <Button type="submit" className="mt-8 w-full">
+          <Button type="submit" className="mt-8 w-full" disabled={isLoading}>
             Save Exam
           </Button>
         </Form.Element>
