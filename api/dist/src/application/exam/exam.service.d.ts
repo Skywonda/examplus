@@ -13,4 +13,10 @@ export declare class ExamService {
     getExamResult(takenExamId: string, userId: string): Promise<TakenExam>;
     private calculateScore;
     private calculateGrade;
+    calculateStudentCGPA(studentId: string): Promise<{
+        TNU: number;
+        TCP: number;
+        CGPA: number;
+    }>;
+    private gradeToGradePoint;
 }

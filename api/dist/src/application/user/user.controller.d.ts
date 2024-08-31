@@ -1,7 +1,9 @@
 import { UserService } from './user.service';
+import { ExamService } from '../exam/exam.service';
 export declare class UserController {
     private readonly userService;
-    constructor(userService: UserService);
+    private readonly examService;
+    constructor(userService: UserService, examService: ExamService);
     studentDashboard({ id }: {
         id: any;
     }): Promise<{
@@ -31,4 +33,9 @@ export declare class UserController {
         score: number;
         grade: string;
     }[]>;
+    getStudentCGPA(user: any): Promise<{
+        TNU: number;
+        TCP: number;
+        CGPA: number;
+    }>;
 }

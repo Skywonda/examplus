@@ -201,6 +201,52 @@ let ExamService = class ExamService {
             return 'F';
         }
     }
+    async calculateStudentCGPA(studentId) {
+        const takenExams = await this.prisma.takenExam.findMany({
+            where: { userId: studentId },
+            include: {
+                result: true,
+                exam: { select: { courseUnit: true } },
+            },
+        });
+        if (takenExams.length === 0) {
+            return { TNU: 0, TCP: 0, CGPA: 0 };
+        }
+        let totalGradePoints = 0;
+        let totalCourseUnits = 0;
+        for (const takenExam of takenExams) {
+            if (!takenExam.result) {
+                continue;
+            }
+            const gradePoint = this.gradeToGradePoint(takenExam.result.grade);
+            totalGradePoints += gradePoint * takenExam.exam.courseUnit;
+            totalCourseUnits += takenExam.exam.courseUnit;
+        }
+        const cgpa = parseFloat((totalGradePoints / totalCourseUnits).toFixed(2));
+        return {
+            TNU: totalCourseUnits,
+            TCP: totalGradePoints,
+            CGPA: cgpa,
+        };
+    }
+    gradeToGradePoint(grade) {
+        switch (grade) {
+            case 'A':
+                return 5;
+            case 'B':
+                return 4;
+            case 'C':
+                return 3;
+            case 'D':
+                return 2;
+            case 'E':
+                return 1;
+            case 'F':
+                return 0;
+            default:
+                return;
+        }
+    }
 };
 ExamService = __decorate([
     (0, common_1.Injectable)(),

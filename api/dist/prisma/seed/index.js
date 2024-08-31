@@ -19,6 +19,7 @@ async function main() {
         {
             title: 'Introduction to Programming',
             courseCode: 'CS101',
+            courseUnit: 3,
             description: 'Fundamentals of programming concepts',
             duration: 1800,
             dueDate: new Date(Date.now() + 24 * 60 * 60 * 1000),
@@ -63,6 +64,7 @@ async function main() {
         {
             title: 'Data Structures and Algorithms',
             courseCode: 'CS202',
+            courseUnit: 4,
             description: 'Exploring data structures and algorithms',
             duration: 3600,
             dueDate: new Date(Date.now() + 24 * 60 * 60 * 1000),
@@ -112,6 +114,7 @@ async function main() {
         {
             title: 'General Knowledge Quiz',
             courseCode: 'GK101',
+            courseUnit: 2,
             description: 'Test your general knowledge',
             duration: 2700,
             dueDate: new Date(Date.now() + 24 * 60 * 60 * 1000),

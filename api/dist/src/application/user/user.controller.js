@@ -20,15 +20,20 @@ const client_1 = require("@prisma/client");
 const login_guard_1 = require("../../infrastructure/auth/guards/login.guard");
 const role_guard_1 = require("../../infrastructure/auth/guards/role.guard");
 const current_user_decorator_1 = require("../../infrastructure/decorator/current-user.decorator");
+const exam_service_1 = require("../exam/exam.service");
 let UserController = class UserController {
-    constructor(userService) {
+    constructor(userService, examService) {
         this.userService = userService;
+        this.examService = examService;
     }
     studentDashboard({ id }) {
         return this.userService.studentDashboard(id);
     }
     getExamResults({ id }) {
         return this.userService.getSemesterExamResults(id);
+    }
+    async getStudentCGPA(user) {
+        return await this.examService.calculateStudentCGPA(user.id);
     }
 };
 __decorate([
@@ -47,10 +52,19 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "getExamResults", null);
+__decorate([
+    (0, common_1.Get)('cgpa'),
+    (0, role_decorator_1.Roles)(client_1.UserType.STUDENT),
+    __param(0, (0, current_user_decorator_1.CurrentUser)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "getStudentCGPA", null);
 UserController = __decorate([
     (0, common_1.Controller)('user'),
     (0, common_1.UseGuards)(login_guard_1.LoginGuard, role_guard_1.RolesGuard),
-    __metadata("design:paramtypes", [user_service_1.UserService])
+    __metadata("design:paramtypes", [user_service_1.UserService,
+        exam_service_1.ExamService])
 ], UserController);
 exports.UserController = UserController;
 //# sourceMappingURL=user.controller.js.map
