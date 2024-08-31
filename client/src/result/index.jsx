@@ -2,6 +2,7 @@ import Result from "component/studentResult";
 import StudentProfile from "component/profile";
 import { api } from "utils/api";
 import Loading from "component/loading";
+import CGPATable from "component/cgpTable";
 
 const StudentResult = () => {
   const {
@@ -10,6 +11,13 @@ const StudentResult = () => {
     isLoading,
     isError,
   } = api.useGet("/user/exam-results");
+
+  const {
+    data,
+    isSuccess: cgpaSuccess,
+    isLoading: cgpaLoading,
+    isError: cgpaError,
+  } = api.useGet("/user/cgpa");
   const profileData = {
     fullname: "Samuel Ayobami",
     matric_no: "CSC/28/234",
@@ -36,6 +44,19 @@ const StudentResult = () => {
       {isSuccess && (
         <div className="mt-20">
           <Result examData={results} />
+        </div>
+      )}
+
+      {cgpaError && <div className="mt-20">Something went wrong</div>}
+      {cgpaLoading && (
+        <div className="flex flex-col justify-center">
+          <Loading message={"Loading results..."} />
+        </div>
+      )}
+
+      {cgpaSuccess && (
+        <div className="mt-20">
+          <CGPATable data={data} />
         </div>
       )}
     </div>
